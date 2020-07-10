@@ -40,12 +40,10 @@ class Builder(object):
     # <<public>>        
     def build(self, buildParameter):
         isinstance(buildParameter, BuildParameter)
-        
-        trainer = self.trainerFactory.create(buildParameter)
+
         agent = self.agentFactory.create(buildParameter)
-        environment = self.environmentFactory.create(buildParameter)
-                
-        trainer.train(agent, environment)
+        environment = self.environmentFactory.create(buildParameter)        
+        trainer = self.trainerFactory.create(buildParameter, agent, environment)
         
         nEpoch = buildParameter.nEpoch
         nIntervalSave = buildParameter.nIntervalSave
@@ -63,7 +61,7 @@ class Builder(object):
             
             nEpochLoc = min(nIntervalSave, nEpoch - epoch) 
             for _ in range(nEpochLoc):
-                trainer.train(agent, environment)
+                trainer.train()
             self.save(agent, buildParameter, epoch)
             self.logger.info(agent, buildParameter, environment, epoch, trainer)            
             epoch += nEpochLoc 

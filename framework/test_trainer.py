@@ -16,22 +16,19 @@ class Test(unittest.TestCase):
     def setUp(self):
         unittest.TestCase.setUp(self)
         
+        agent = Agent()
+        environment = Environment()
+        
         self.trainers = []
-        self.trainers.append(Trainer())
+        self.trainers.append(Trainer(agent, environment))
 
     def test001(self):
         
         for trainer in self.trainers:
             assert isinstance(trainer, Trainer)
             
-            agent = Agent()
-            environment = Environment()
-
-            try:            
-                trainer.train(agent, environment)
-            except NotImplementedError as ex:
-                pass
-        
+            trainer.train()
+            
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test001']

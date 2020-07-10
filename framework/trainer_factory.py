@@ -12,9 +12,9 @@ class TrainerFactory(object):
     '''
 
 
-    def create(self, buildParameter):
+    def create(self, buildParameter, agent, environment):
         isinstance(buildParameter, BuildParameter)
         
-        trainer = Trainer()
+        trainer = Trainer(agent, environment)
         
         return trainer
