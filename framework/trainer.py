@@ -12,7 +12,13 @@ class Trainer(object):
     classdocs
     '''
     
-    # <<public>>
-    def train(self, agent, environment):
+    def __init__(self, agent, environment):
         assert isinstance(agent, Agent)
         assert isinstance(environment, Environment)
+        self.agent = agent
+        self.environment = environment
+        
+    # <<public>>
+    def train(self):
+        return
+        
