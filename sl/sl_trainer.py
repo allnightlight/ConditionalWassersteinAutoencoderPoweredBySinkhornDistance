@@ -21,14 +21,10 @@ class SlTrainer(Trainer):
         '''
         Constructor
         '''
-        super(SlTrainer, self).__init__()
+        super(SlTrainer, self).__init__(agent, environment)
         
         assert isinstance(environment, SlEnvironment)
         assert isinstance(agent, SlAgent)
-        
-        self.agent = agent
-        self.environment = environment
-        
          
     def train(self):
         
