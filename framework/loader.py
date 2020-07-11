@@ -28,9 +28,9 @@ class Loader(object):
         self.buildParameterFactory = buildParameterFactory
         self.store = store
         
-    def load(self, buildParameterLabel, epoch = None):
+    def load(self, buildParameterLabel, epoch = None, buildParameterKey = None):
         
-        for storeField in self.store.restore(buildParameterLabel, epoch):
+        for storeField in self.store.restore(buildParameterLabel, epoch, buildParameterKey):
             buildParameter = self.buildParameterFactory.create()            
             buildParameter.loadMemento(storeField.buildParameterMemento)
             
@@ -38,4 +38,6 @@ class Loader(object):
             agent = self.agentFactory.create(buildParameter, environment)
             agent.loadMemento(storeField.agentMemento)
             
-            yield agent, buildParameter, epoch        
+            epoch = storeField.epoch
+            
+            yield agent, buildParameter, epoch
