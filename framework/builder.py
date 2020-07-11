@@ -41,8 +41,8 @@ class Builder(object):
     def build(self, buildParameter):
         isinstance(buildParameter, BuildParameter)
 
-        agent = self.agentFactory.create(buildParameter)
-        environment = self.environmentFactory.create(buildParameter)        
+        environment = self.environmentFactory.create(buildParameter)
+        agent = self.agentFactory.create(buildParameter, environment)                
         trainer = self.trainerFactory.create(buildParameter, agent, environment)
         
         nEpoch = buildParameter.nEpoch

@@ -29,6 +29,12 @@ class Test(unittest.TestCase):
         cls.dbPath = "testDb.sqlite"
         if os.path.exists(cls.dbPath):
             os.remove(cls.dbPath)
+            
+    @classmethod
+    def tearDownClass(cls):
+        super(Test, cls).tearDownClass()
+        if os.path.exists(cls.dbPath):
+            os.remove(cls.dbPath)
     
     def setUp(self):
         unittest.TestCase.setUp(self)
@@ -48,7 +54,7 @@ class Test(unittest.TestCase):
             nEpoch = 100
             self.buildParameters.append(BuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
         
-        self.loader = Loader(agentFactory, buildParameterFactory, store)
+        self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
 
     def test001(self):

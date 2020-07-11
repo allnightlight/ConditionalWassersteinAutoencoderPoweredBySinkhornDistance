@@ -3,6 +3,7 @@ Created on 2020/07/10
 
 @author: ukai
 '''
+import os
 import unittest
 
 from agent import Agent
@@ -12,6 +13,7 @@ from build_parameter_factory import BuildParameterFactory
 from loader import Loader
 from store import Store
 from store_field import StoreField
+from environment_factory import EnvironmentFactory
 
 
 class Test(unittest.TestCase):
@@ -21,6 +23,8 @@ class Test(unittest.TestCase):
         super(Test, cls).setUpClass()
         
         dbPath = "testDb.sqlite"
+        if os.path.exists(dbPath):
+            os.remove(dbPath)
         
         store = Store(dbPath)
         assert isinstance(store, Store)
@@ -43,13 +47,21 @@ class Test(unittest.TestCase):
         cls.dbPath = dbPath
         
 
+    @classmethod
+    def tearDownClass(cls):
+        super(Test, cls).tearDownClass()
+        if os.path.exists(cls.dbPath):
+            os.remove(cls.dbPath)
+
+
     def test0001(self):
         
         store = Store(self.dbPath)
         agentFactory = AgentFactory()
+        environmentFactory = EnvironmentFactory()
         buildParameterFactory = BuildParameterFactory()
         
-        loader = Loader(agentFactory, buildParameterFactory, store)
+        loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         assert isinstance(loader, Loader)
         
         for agent, buildParameter, epoch in loader.load("test%", None):

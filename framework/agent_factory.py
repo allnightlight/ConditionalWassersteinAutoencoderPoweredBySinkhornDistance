@@ -13,7 +13,7 @@ class AgentFactory(object):
     '''
 
 
-    def create(self, buildParameter):
+    def create(self, buildParameter, environment):
         isinstance(buildParameter, BuildParameter)
         
         agent = Agent()
