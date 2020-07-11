@@ -110,7 +110,7 @@ class Store(object):
             if epoch is not None:
                 sql += " And epoch = %d" % epoch
             if buildParameterKey is not None:
-                sql += " And build_parameter_key = %s" % buildParameterKey
+                sql += " And build_parameter_key = \"%s\"" % buildParameterKey
             sql += " Order by b.build_parameter_id, t.epoch"
                 
             cur.execute(sql, (buildParameterLabel,))
