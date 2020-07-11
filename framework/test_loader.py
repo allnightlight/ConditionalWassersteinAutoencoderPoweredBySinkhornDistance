@@ -68,6 +68,24 @@ class Test(unittest.TestCase):
         for agent, buildParameter, epoch in loader.load("test%", None):
             assert isinstance(agent, Agent)
             assert isinstance(buildParameter, BuildParameter)
+
+        epochGiven = 1
+        for agent, buildParameter, epoch in loader.load("test%", epoch=epochGiven):
+            assert isinstance(agent, Agent)
+            assert isinstance(buildParameter, BuildParameter)
+            assert epoch == epochGiven
+
+        buildParameterKeyGiven = buildParameter.key
+        for agent, buildParameter, epoch in loader.load("test%", buildParameterKey=buildParameterKeyGiven):
+            assert isinstance(agent, Agent)
+            assert isinstance(buildParameter, BuildParameter)
+            assert buildParameter.key == buildParameterKeyGiven
+
+        for agent, buildParameter, epoch in loader.load("test%", buildParameterKey=buildParameterKeyGiven, epoch = epochGiven):
+            assert isinstance(agent, Agent)
+            assert isinstance(buildParameter, BuildParameter)
+            assert buildParameter.key == buildParameterKeyGiven
+            assert epoch == epochGiven
             
 
 if __name__ == "__main__":
