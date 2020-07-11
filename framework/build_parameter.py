@@ -18,7 +18,7 @@ class BuildParameter(object):
         Constructor
         '''
         
-        self.id = Utils.generateRandomString(16)
+        self.key = Utils.generateRandomString(16)
         self.nIntervalSave = nIntervalSave
         self.nEpoch = nEpoch
         self.label = label
