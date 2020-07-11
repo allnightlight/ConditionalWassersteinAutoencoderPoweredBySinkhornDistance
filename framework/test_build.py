@@ -29,6 +29,12 @@ class Test(unittest.TestCase):
         cls.dbPath = "testDb.sqlite"
         if os.path.exists(cls.dbPath):
             os.remove(cls.dbPath)
+            
+    @classmethod
+    def tearDownClass(cls):
+        super(Test, cls).tearDownClass()
+        if os.path.exists(cls.dbPath):
+            os.remove(cls.dbPath)
     
     def setUp(self):
         unittest.TestCase.setUp(self)

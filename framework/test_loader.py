@@ -3,6 +3,7 @@ Created on 2020/07/10
 
 @author: ukai
 '''
+import os
 import unittest
 
 from agent import Agent
@@ -21,6 +22,8 @@ class Test(unittest.TestCase):
         super(Test, cls).setUpClass()
         
         dbPath = "testDb.sqlite"
+        if os.path.exists(dbPath):
+            os.remove(dbPath)
         
         store = Store(dbPath)
         assert isinstance(store, Store)
@@ -42,6 +45,13 @@ class Test(unittest.TestCase):
                 
         cls.dbPath = dbPath
         
+
+    @classmethod
+    def tearDownClass(cls):
+        super(Test, cls).tearDownClass()
+        if os.path.exists(cls.dbPath):
+            os.remove(cls.dbPath)
+
 
     def test0001(self):
         
