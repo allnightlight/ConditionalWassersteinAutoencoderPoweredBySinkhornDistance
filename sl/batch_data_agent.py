@@ -5,7 +5,8 @@ Created on 2020/07/10
 '''
 
 # <<abstract>>
-class BatchDataIn(object):
+class BatchDataAgent(object):
     '''
     classdocs
     '''
+    

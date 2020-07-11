@@ -5,8 +5,8 @@ Created on 2020/07/10
 '''
 
 from agent import Agent
-from batch_data_out import BatchDataOut
-from batch_data_in import BatchDataIn
+from batch_data_agent import BatchDataAgent
+from batch_data_environment import BatchDataEnvironment
 
 
 class SlAgent(Agent):
@@ -23,7 +23,7 @@ class SlAgent(Agent):
 
     # <<abstract>>
     def forward(self, batchDataIn):
-        assert isinstance(batchDataIn, BatchDataIn)
-        batchDataOut = BatchDataOut()
+        assert isinstance(batchDataIn, BatchDataEnvironment)
+        batchDataOut = BatchDataAgent()
         return batchDataOut
     

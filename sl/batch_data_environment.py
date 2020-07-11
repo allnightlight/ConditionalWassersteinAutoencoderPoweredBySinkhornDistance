@@ -5,8 +5,7 @@ Created on 2020/07/10
 '''
 
 # <<abstract>>
-class BatchDataOut(object):
+class BatchDataEnvironment(object):
     '''
     classdocs
     '''
-    

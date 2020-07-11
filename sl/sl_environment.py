@@ -4,7 +4,7 @@ Created on 2020/07/10
 @author: ukai
 '''
 
-from batch_data_in import BatchDataIn
+from batch_data_environment import BatchDataEnvironment
 from environment import Environment
 
 
@@ -19,4 +19,4 @@ class SlEnvironment(Environment):
     # <<abstract>>
     def generateBatchDataIterator(self):
         
-        yield BatchDataIn()
+        yield BatchDataEnvironment()

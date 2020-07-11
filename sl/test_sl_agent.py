@@ -3,11 +3,12 @@ Created on 2020/07/10
 
 @author: ukai
 '''
-import unittest
-from sl_agent import SlAgent
 from builtins import isinstance
-from batch_data_in import BatchDataIn
-from batch_data_out import BatchDataOut
+import unittest
+
+from batch_data_agent import BatchDataAgent
+from batch_data_environment import BatchDataEnvironment
+from sl_agent import SlAgent
 
 
 class Test(unittest.TestCase):
@@ -19,10 +20,10 @@ class Test(unittest.TestCase):
         
         assert isinstance(agent, SlAgent)
         
-        batchDataIn = BatchDataIn()
+        batchDataIn = BatchDataEnvironment()
         batchDataOut = agent.forward(batchDataIn)
         
-        assert isinstance(batchDataOut, BatchDataOut)
+        assert isinstance(batchDataOut, BatchDataAgent)
         
 
 if __name__ == "__main__":

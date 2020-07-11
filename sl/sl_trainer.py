@@ -5,11 +5,11 @@ Created on 2020/07/10
 '''
 from builtins import isinstance
 
+from batch_data_agent import BatchDataAgent
+from batch_data_environment import BatchDataEnvironment
 from sl_agent import SlAgent
 from sl_environment import SlEnvironment
 from trainer import Trainer
-from batch_data_in import BatchDataIn
-from batch_data_out import BatchDataOut
 
 
 class SlTrainer(Trainer):
@@ -34,6 +34,6 @@ class SlTrainer(Trainer):
         
     # <<abstract>>    
     def update(self, batchDataIn, batchDataOut):
-        assert isinstance(batchDataIn, BatchDataIn)
-        assert isinstance(batchDataOut, BatchDataOut)
+        assert isinstance(batchDataIn, BatchDataEnvironment)
+        assert isinstance(batchDataOut, BatchDataAgent)
         return
