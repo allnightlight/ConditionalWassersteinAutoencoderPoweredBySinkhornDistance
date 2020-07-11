@@ -9,9 +9,10 @@ class StoreField(object):
     classdocs
     '''
 
-    def __init__(self, agentMemento, epoch, buildParameterMemento, buildParameterLabel):
+    def __init__(self, agentMemento, epoch, buildParameterMemento, buildParameterKey, buildParameterLabel):
         
         self.agentMemento = agentMemento
         self.epoch = epoch
         self.buildParameterMemento = buildParameterMemento
         self.buildParameterLabel = buildParameterLabel
+        self.buildParameterKey = buildParameterKey
