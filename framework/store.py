@@ -105,6 +105,7 @@ class Store(object):
                             On t.build_parameter_id = b.build_parameter_id
                     Where b.build_parameter_label like ?
                     And t.epoch = ?
+                    Order by b.build_parameter_id, t.epoch
                 """, (buildParameterLabel, epoch,))
             else:
                 cur.execute("""
@@ -117,7 +118,7 @@ class Store(object):
                         Join BuildParameter b
                             On t.build_parameter_id = b.build_parameter_id
                     Where b.build_parameter_label like ?
-                    Order by epoch
+                    Order by b.build_parameter_id, t.epoch
                 """, (buildParameterLabel,))
         
                 

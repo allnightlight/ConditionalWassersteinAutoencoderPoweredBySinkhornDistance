@@ -14,7 +14,7 @@ class SlAgentFactory(AgentFactory):
     '''
 
 
-    def create(self, buildParameter):
+    def create(self, buildParameter, environment):
         assert isinstance(buildParameter, SlBuildParameter)
 
         return SlAgent()
