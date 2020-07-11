@@ -47,7 +47,7 @@ class Test(unittest.TestCase):
             nEpoch = 100
             self.buildParameters.append(SlBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
         
-        self.loader = Loader(agentFactory, buildParameterFactory, store)
+        self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
     @classmethod
     def tearDownClass(cls):
