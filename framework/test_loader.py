@@ -37,9 +37,10 @@ class Test(unittest.TestCase):
         
                 agentMemento = agent.createMemento()
                 buildParameterMemento = buildParameter.createMemento()
+                buildParameterKey = buildParameter.key
                 buildParameterLabel = buildParameter.label
         
-                storeField = StoreField(agentMemento, epoch, buildParameterMemento, buildParameterLabel)
+                storeField = StoreField(agentMemento, epoch, buildParameterMemento, buildParameterKey, buildParameterLabel)
                 assert isinstance(storeField, StoreField)
                 
                 store.append(storeField)
