@@ -13,6 +13,7 @@ from build_parameter_factory import BuildParameterFactory
 from loader import Loader
 from store import Store
 from store_field import StoreField
+from environment_factory import EnvironmentFactory
 
 
 class Test(unittest.TestCase):
@@ -57,9 +58,10 @@ class Test(unittest.TestCase):
         
         store = Store(self.dbPath)
         agentFactory = AgentFactory()
+        environmentFactory = EnvironmentFactory()
         buildParameterFactory = BuildParameterFactory()
         
-        loader = Loader(agentFactory, buildParameterFactory, store)
+        loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         assert isinstance(loader, Loader)
         
         for agent, buildParameter, epoch in loader.load("test%", None):
