@@ -29,4 +29,4 @@ class WaeTrainerFactory(SlTrainerFactory):
         assert isinstance(environment, WaeEnvironment)
         assert isinstance(agent, WaeAgent)
         
-        return WaeTrainer(agent, environment)
+        return WaeTrainer(agent, environment, reg_param = buildParameter.reg_param)

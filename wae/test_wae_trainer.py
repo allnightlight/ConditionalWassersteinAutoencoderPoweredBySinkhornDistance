@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
         
         agent = WaeAgent(nX, nZ, nH, nXi)
         
-        trainer = WaeTrainer(agent, environment)
+        trainer = WaeTrainer(agent, environment, reg_param = 0.1)
                 
         self.environment = environment
         self.agent = agent

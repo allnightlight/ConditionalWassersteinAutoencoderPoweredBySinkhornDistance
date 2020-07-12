@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
         trainerFactory = WaeTrainerFactory()        
         buildParameterFactory = WaeBuildParameterFactory()
         store = Store(self.dbPath)
-        logger = MyLogger(console_print=False)
+        logger = MyLogger(console_print=True)
         
         self.builder = Builder(trainerFactory, agentFactory, environmentFactory, store, logger)
         
