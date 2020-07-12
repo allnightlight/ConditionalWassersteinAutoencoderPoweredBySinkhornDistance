@@ -24,17 +24,33 @@ class WaeEnvironment(SlEnvironment):
         '''
         super(WaeEnvironment, self).__init__()
         self.nBatch = nBatch
-        
-        
+        self.dataX = None # protected
+        self.dataZ = None # protected
+        self.loadData()
+    
+    # <<public>>    
     def generateBatchDataIterator(self):
-        
-        eye = np.eye(self.nZ).astype(np.float32) # (nZ, nZ)
-        
-        for _ in range(10):
-            X = np.random.randn(self.nBatch, self.nX).astype(np.float32) # (*, nX)
-            Z = eye[np.random.randint(self.nZ, size=(self.nBatch,)),:] # (*, nZ)
             
+        for idx in self.generateIdxIterator():
+
+            X = self.dataX[idx,:].astype(np.float32) # (*, nX)
+            Z = self.dataZ[idx,:].astype(np.float32) # (*, nZ)
+
             _X = torch.from_numpy(X) # (*, nX)
             _Z = torch.from_numpy(Z) # (*, nZ)
             
             yield WaeBatchDataEnvironment(_X, _Z)
+            
+    # <<procted>>
+    def loadData(self):
+        nSample = 2**7
+        self.dataX = np.random.randn(nSample, self.nX) # (nSample, nX)
+        self.dataZ = np.eye(self.nZ)[np.random.randint(self.nZ, size=(nSample,)), :] # (nSample, nZ), private
+    
+    # <<procted>>    
+    def generateIdxIterator(self):
+        nSample = self.dataX.shape[0]
+        for _ in range(nSample//self.nBatch):
+            idx = np.random.randint(nSample, size=(self.nBatch))
+            yield idx
+        
