@@ -44,9 +44,9 @@ class Test(unittest.TestCase):
         self.builder = Builder(trainerFactory, agentFactory, environmentFactory, store, logger)
         
         self.buildParameters = []
-        for k1 in range(3):
+        for k1 in range(2):
             nIntervalSave = 10
-            nEpoch = 100
+            nEpoch = 20
             self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
         
         self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)

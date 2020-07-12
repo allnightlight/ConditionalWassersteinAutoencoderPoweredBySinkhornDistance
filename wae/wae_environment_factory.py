@@ -25,4 +25,7 @@ class WaeEnvironmentFactory(SlEnvironmentFactory):
     def create(self, buildParameter):
         assert isinstance(buildParameter, WaeBuildParameter)
         
-        return WaeEnvironment(nBatch = buildParameter.nBatch)
+        environment = WaeEnvironment(nBatch = buildParameter.nBatch)
+        environment.loadData()
+        
+        return environment

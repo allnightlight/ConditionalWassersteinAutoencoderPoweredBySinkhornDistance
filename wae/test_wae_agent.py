@@ -21,6 +21,7 @@ class Test(unittest.TestCase):
         WaeAgent.checkPointPath = "./testCheckPoint"
         
         environment = WaeEnvironment(nBatch = 2**5)
+        environment.loadData()
         
         nX = environment.nX
         nZ = environment.nZ
