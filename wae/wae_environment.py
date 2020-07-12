@@ -15,18 +15,19 @@ class WaeEnvironment(SlEnvironment):
     classdocs
     '''
 
-    nX = 5
-    nZ = 2**1
-
     def __init__(self, nBatch):
         '''
         Constructor
         '''
         super(WaeEnvironment, self).__init__()
+        
+        
+        self.nX = 5
+        self.nZ = 2**1
+        
         self.nBatch = nBatch
         self.dataX = None # protected
         self.dataZ = None # protected
-        self.loadData()
     
     # <<public>>    
     def generateBatchDataIterator(self):

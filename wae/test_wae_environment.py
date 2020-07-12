@@ -17,6 +17,7 @@ class Test(unittest.TestCase):
         nBatch = 2**5
         
         environment = WaeEnvironment(nBatch)
+        environment.loadData()
         for batchDataEnvironment in environment.generateBatchDataIterator():
             assert isinstance(batchDataEnvironment, WaeBatchDataEnvironment)
             _X = batchDataEnvironment._X
