@@ -53,18 +53,15 @@ class Builder(object):
         self.logger.info(agent, buildParameter, environment, epoch, trainer)
             
         while True:
-            if epoch >= nEpoch:  
+            if epoch >= nEpoch:
                 break
             else:
+                nEpochLoc = min(nIntervalSave, nEpoch - epoch)
+                for _ in range(nEpochLoc):
+                    trainer.train()
+                    epoch += 1
                 self.save(agent, buildParameter, epoch)
                 self.logger.info(agent, buildParameter, environment, epoch, trainer)
-            
-            nEpochLoc = min(nIntervalSave, nEpoch - epoch) 
-            for _ in range(nEpochLoc):
-                trainer.train()
-            self.save(agent, buildParameter, epoch)
-            self.logger.info(agent, buildParameter, environment, epoch, trainer)            
-            epoch += nEpochLoc 
 
     
     # <<private>>
