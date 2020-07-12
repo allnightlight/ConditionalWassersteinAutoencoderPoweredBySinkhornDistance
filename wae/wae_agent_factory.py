@@ -28,4 +28,5 @@ class WaeAgentFactory(SlAgentFactory):
         return WaeAgent(nX = environment.nX
                         , nZ = environment.nZ
                         , nH = buildParameter.nH
-                        , nXi = buildParameter.nXi)
+                        , nXi = buildParameter.nXi
+                        , cluster_interval = buildParameter.cluster_interval)

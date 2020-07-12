@@ -24,7 +24,7 @@ class WaeAgent(SlAgent, Module):
 
     checkPointPath = "./checkpoint"
 
-    def __init__(self, nX, nZ, nH, nXi):
+    def __init__(self, nX, nZ, nH, nXi, cluster_interval):
         '''
         Constructor
         '''
@@ -47,6 +47,7 @@ class WaeAgent(SlAgent, Module):
         self.dec = dec
         self.nZ = nZ
         self.nXi = nXi
+        self.cluster_interval = cluster_interval
         
     def forward(self, batchDataEnvironment):
         
@@ -70,7 +71,8 @@ class WaeAgent(SlAgent, Module):
         nBatch = _Z.shape[0]
         
         Z = _Z.data.numpy() # (*, nZ)
-        Offset = np.sum(Z * np.arange(self.nZ), axis=-1) # (*,)
+        offset = self.cluster_interval * np.arange(self.nZ) # (nZ) 
+        Offset = np.sum(Z * offset, axis=-1) # (*,)
         Tmp = np.random.randn(nBatch, self.nXi) # (*, nXi)
         Tmp[:,0] += Offset # (*,)
         

@@ -27,8 +27,8 @@ class Test(unittest.TestCase):
         nH = 2**5
         nXi = 2
         
-        agent = WaeAgent(nX, nZ, nH, nXi)
-        agentAnother = WaeAgent(nX, nZ, nH, nXi)
+        agent = WaeAgent(nX, nZ, nH, nXi, cluster_interval = 3.0)
+        agentAnother = WaeAgent(nX, nZ, nH, nXi, cluster_interval = 3.0)
                 
         self.agent = agent
         self.agentAnother = agentAnother
