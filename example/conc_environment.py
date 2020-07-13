@@ -119,9 +119,14 @@ Select
         idx = idx[~np.any(np.isnan(self.dataX[idx,:]), axis=-1)]
         idx = idx[~np.any(np.isnan(self.dataZ[idx,:]), axis=-1)] # not include nan for Pv and Event
         
-        nSampleTrain = len(idx)
-        for _ in range(nSampleTrain//self.nBatch):
-            idxBatch = np.random.choice(idx, size=(self.nBatch,)) # (nBatch,)        
+        idxOff = idx[self.dataZ[idx,0] == 1] # index without event
+        idxOn = idx[self.dataZ[idx,1] == 1] # index with event
+                
+        nSampleTrainOn = len(idxOn)
+        for _ in range(nSampleTrainOn//self.nBatch):
+            idxOnBatch = np.random.choice(idxOn, size=(self.nBatch,)) # (nBatch,)
+            idxOffBatch = np.random.choice(idxOff, size=(self.nBatch,)) # (nBatch,)
+            idxBatch = np.concatenate((idxOnBatch, idxOffBatch), axis=0) # (2*nBatch,)        
             yield idxBatch
         
     # <<private>>

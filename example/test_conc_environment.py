@@ -5,6 +5,7 @@ Created on 2020/07/13
 '''
 import unittest
 
+from conc_batch_data_environment import ConcBatchDataEnvironment
 from conc_environment import ConcEnvironment
 import numpy as np
 from wae_batch_data_environment import WaeBatchDataEnvironment
@@ -27,9 +28,7 @@ class Test(unittest.TestCase):
         environment.loadData()
         
         cnt = 0
-        for batchDataEnvironment in [*environment.generateBatchDataIterator()
-             , environment.getDataTrain() 
-             , environment.getDataTest()]:
+        for batchDataEnvironment in environment.generateBatchDataIterator():
 
             assert isinstance(batchDataEnvironment, WaeBatchDataEnvironment)
             
@@ -37,10 +36,23 @@ class Test(unittest.TestCase):
             Z = batchDataEnvironment._Z.data.numpy()
             
             assert ~np.any(np.isnan(X))
-            assert ~np.any(np.isnan(Z))
+            assert ~np.any(np.isnan(Z))            
+            assert np.all(np.sum(Z, axis=0) == nBatch)
             
             cnt += 1
-        assert cnt > 2
+        assert cnt > 0
+        
+        for batchDataEnvironment in [environment.getDataTrain() 
+             , environment.getDataTest()]:
+
+            assert isinstance(batchDataEnvironment, ConcBatchDataEnvironment)
+            
+            X = batchDataEnvironment._X.data.numpy()
+            Z = batchDataEnvironment._Z.data.numpy()
+            timestamp = batchDataEnvironment.timestamp
+            
+            assert ~np.any(np.isnan(X))
+            assert ~np.any(np.isnan(Z))
         
 
 if __name__ == "__main__":
