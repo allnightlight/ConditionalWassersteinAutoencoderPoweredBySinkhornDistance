@@ -12,6 +12,7 @@ import torch
 from conc_batch_data_environment import ConcBatchDataEnvironment
 import numpy as np
 from wae_environment import WaeEnvironment
+from data_singleton import DataSingleton
 
 
 class ConcEnvironment(WaeEnvironment):
@@ -61,40 +62,12 @@ class ConcEnvironment(WaeEnvironment):
         
         tags = [*self.pv_tags, self.ev_tag]
         period = self.period
-                
-        sql = """
-Select 
-    d.value
-    , timestamp
-    From DataTable d
-        Where d.tag in ({0})
-        And timestamp >= ?
-        And timestamp < ?
-        And Cast(strftime('%M', timestamp) as int) % {1} == 0
-    Order by d.timestamp_id, d.tag
-""".format(",".join(map(lambda xx: '"%s"' % xx, tags)), self.samplingIntervalMinute)
+        
+        dataInst = DataSingleton.getInstance(self.dbFilePath, period, tags, self.samplingIntervalMinute)
 
-        conn = None
-        data = None
-        try:
-            conn = sqlite3.connect(self.dbFilePath, detect_types = sqlite3.PARSE_COLNAMES|sqlite3.PARSE_DECLTYPES)
-            cur = conn.cursor()
-            cur.execute(sql, period)
-            data, timestamp = zip(*cur.fetchall())        
-            data = np.array(data, dtype=np.float32).reshape(-1, len(tags)) # (nSample, nTag)
-            timestamp = np.array([*map(lambda xx: datetime.strptime(xx, "%Y-%m-%d %H:%M:%S"),
-                                       timestamp)]).reshape(-1, len(tags)) # (nSample, nTag)
-            timestamp = timestamp[:,0] # (nSample,)
-        except:
-            traceback.print_exc()
-            data = None
-        finally:
-            if conn is not None:                
-                conn.close()
-                
-        assert data is not None, "FAILED TO LOADING DATA FROM THE GIVEN DB: %s" % self.dbFilePath
+        data = dataInst.data
+        timestamp = dataInst.timestamp
                         
-        data = data[:, np.argsort(np.argsort(tags))]
         nSample = len(timestamp)
         
         dataPvRaw = data[:,:-1] # (*, nPv)        
