@@ -24,7 +24,7 @@ class ConcAgentCs01a(WaeAgent):
         
         nBatch = _Z.shape[0]
         
-        Xi = np.random.randn(nBatch, self.nXi) # (:, nXi)
+        Xi = np.random.rand(nBatch, self.nXi) # (:, nXi)
         
         _Xi = torch.from_numpy(Xi.astype(np.float32)) # (*, nXi)
         
