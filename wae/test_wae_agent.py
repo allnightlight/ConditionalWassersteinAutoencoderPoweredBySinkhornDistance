@@ -27,9 +27,10 @@ class Test(unittest.TestCase):
         nZ = environment.nZ
         nH = 2**5
         nXi = 2
+        nLayer = 2
         
-        agent = WaeAgent(nX, nZ, nH, nXi, cluster_interval = 3.0)
-        agentAnother = WaeAgent(nX, nZ, nH, nXi, cluster_interval = 3.0)
+        agent = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval = 3.0)
+        agentAnother = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval = 3.0)
                 
         self.agent = agent
         self.agentAnother = agentAnother

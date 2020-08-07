@@ -24,24 +24,28 @@ class WaeAgent(SlAgent, Module):
 
     checkPointPath = "./checkpoint"
 
-    def __init__(self, nX, nZ, nH, nXi, cluster_interval):
+    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval):
         '''
         Constructor
         '''
         
         super(WaeAgent, self).__init__()
         
-        enc = Sequential(
-            Linear(nX, nH)
-            , ReLU()
-            , Linear(nH, nXi)
-            )
+        stacks = [Linear(nX, nH), ReLU()]
+        for _ in range(nLayer - 1):
+            stacks.append(Linear(nH, nH))
+            stacks.append(ReLU())
+        stacks.append(Linear(nH, nXi))
         
-        dec = Sequential(
-            Linear(nXi, nH)
-            , ReLU()
-            , Linear(nH, nX)
-            )
+        enc = Sequential(*stacks)
+        
+        stacks = [Linear(nXi, nH), ReLU()]
+        for _ in range(nLayer - 1):
+            stacks.append(Linear(nH, nH))
+            stacks.append(ReLU())
+        stacks.append(Linear(nH, nX))
+        
+        dec = Sequential(*stacks)
         
         self.enc = enc
         self.dec = dec
