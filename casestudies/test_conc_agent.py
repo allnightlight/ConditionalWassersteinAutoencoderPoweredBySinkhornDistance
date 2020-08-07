@@ -15,9 +15,9 @@ class Test(unittest.TestCase):
 
     def test001(self):
         
-        nX, nZ, nH, nXi, cluster_interval = (2, 1, 2**3, 2, 3)
+        nX, nZ, nH, nXi, nLayer, cluster_interval = (2, 1, 2**3, 2, 2, 3)
         
-        agent = ConcAgentCs01a(nX, nZ, nH, nXi, cluster_interval)
+        agent = ConcAgentCs01a(nX, nZ, nH, nXi, nLayer, cluster_interval)
         
         isinstance(agent, ConcAgentCs01a)
         
