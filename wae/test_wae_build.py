@@ -6,6 +6,7 @@ Created on 2020/07/11
 import os
 import shutil
 import unittest
+import numpy as np
 
 from builder import Builder
 from loader import Loader
@@ -47,7 +48,9 @@ class Test(unittest.TestCase):
         for k1 in range(2):
             nIntervalSave = 10
             nEpoch = 20
-            self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
+            nLayer = int(np.random.choice((1,2)))
+            
+            self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1), nLayer = nLayer))
         
         self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
