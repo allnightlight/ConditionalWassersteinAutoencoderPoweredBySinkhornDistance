@@ -69,6 +69,8 @@ class Test(unittest.TestCase):
                 
                 store.append(storeField)
 
+        store.update_db()
+        
         for storeField in store.restore("test%", 1):
             assert isinstance(storeField, StoreField)
 

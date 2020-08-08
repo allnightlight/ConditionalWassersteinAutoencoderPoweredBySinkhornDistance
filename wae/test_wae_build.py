@@ -31,6 +31,11 @@ class Test(unittest.TestCase):
         cls.dbPath = "testDb.sqlite"
         if os.path.exists(cls.dbPath):
             os.remove(cls.dbPath)
+            
+        cls.trainLogFolderPath = "./testTrainLogFolderPath"
+        if os.path.exists(cls.trainLogFolderPath):
+            os.remove(cls.trainLogFolderPath)
+        
     
     def setUp(self):
         unittest.TestCase.setUp(self)
@@ -39,7 +44,7 @@ class Test(unittest.TestCase):
         environmentFactory = WaeEnvironmentFactory()
         trainerFactory = WaeTrainerFactory()        
         buildParameterFactory = WaeBuildParameterFactory()
-        store = Store(self.dbPath)
+        store = Store(self.dbPath, self.trainLogFolderPath)
         logger = MyLogger(console_print=True)
         
         self.builder = Builder(trainerFactory, agentFactory, environmentFactory, store, logger)
@@ -62,6 +67,10 @@ class Test(unittest.TestCase):
                     
         if os.path.exists(WaeAgent.checkPointPath):
             shutil.rmtree(WaeAgent.checkPointPath)
+            
+        if os.path.exists(cls.trainLogFolderPath):
+            shutil.rmtree(cls.trainLogFolderPath)
+
 
 
     def test001(self):

@@ -7,6 +7,10 @@ import os
 import sqlite3
 
 from store_field import StoreField
+import json
+from util import Utils
+import glob
+import traceback
 
 
 class Store(object):
@@ -15,7 +19,31 @@ class Store(object):
     '''
     
     
-    def __init__(self, dbPath):
+    def __init__(self, dbPath, trainLogFolderPath = "./trainlog"):
+                
+        self.dbPath = dbPath        
+        self.trainLogFolderPath = trainLogFolderPath
+        if not os.path.exists(trainLogFolderPath):
+            os.mkdir(trainLogFolderPath)
+
+
+    def append(self, storeField):
+        assert isinstance(storeField, StoreField)
+        
+        dataToSave = {
+            "buildParameterKey": storeField.buildParameterKey
+            , "buildParameterLabel": storeField.buildParameterLabel
+            , "buildParameterMemento": storeField.buildParameterMemento
+            , "agentMemento": storeField.agentMemento
+            , "epoch": storeField.epoch   
+            }
+        
+        trainLogFilePath = os.path.join(self.trainLogFolderPath, Utils.generateRandomString(16))        
+        with open(trainLogFilePath, "w") as fp:
+            json.dump(dataToSave, fp)
+            
+    
+    def update_db(self):
         
         def create_db(dbPath):
             conn = sqlite3.connect(dbPath)
@@ -45,14 +73,6 @@ class Store(object):
         
             conn.close()
 
-        if not os.path.exists(dbPath):
-            create_db(dbPath)
-        
-        self.dbPath = dbPath        
-    
-    def append(self, storeField):
-        assert isinstance(storeField, StoreField)
-        
         def myupdate(dbPath, build_parameter_key, build_parameter_label, build_parameter_memento, agent_memento, epoch):
             conn = sqlite3.connect(dbPath)
             cur = conn.cursor()
@@ -82,13 +102,24 @@ class Store(object):
             
             conn.commit()
             conn.close()
-                    
-        myupdate(self.dbPath
-                 , storeField.buildParameterKey
-                 , storeField.buildParameterLabel
-                 , storeField.buildParameterMemento
-                 , storeField.agentMemento
-                 , storeField.epoch)
+
+        if not os.path.exists(self.dbPath):
+            create_db(self.dbPath)
+        
+        for trainLogFilePath in glob.glob(os.path.join(self.trainLogFolderPath, "*")):
+            with open(trainLogFilePath, "r") as fp:
+                dataFromFile = json.load(fp)
+                myupdate(self.dbPath
+                         , dataFromFile["buildParameterKey"]
+                         , dataFromFile["buildParameterLabel"]
+                         , dataFromFile["buildParameterMemento"]
+                         , dataFromFile["agentMemento"]
+                         , dataFromFile["epoch"])
+            try:
+                os.remove(trainLogFilePath)
+            except :
+                traceback.print_exc()
+
 
     def restore(self, buildParameterLabel, epoch = None, buildParameterKey = None):
                 
