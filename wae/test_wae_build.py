@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
             nEpoch = 20
             nLayer = int(np.random.choice((1,2)))
             
-            self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1), nLayer = nLayer))
+            self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1), nLayer = nLayer, eps_given_sinkhorn = 0.1, tol_sinkhorn = 0.1))
         
         self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
