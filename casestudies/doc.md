@@ -47,25 +47,40 @@ This case study builds representitive models
 of a two-dimensional torus
 by using the autoencoder with the latent variables
 sampled from the two dimentional uniformal distribution.
-We show a consequence caused by the topological mismatch 
+We show an example of the consequence caused by the topological mismatch 
 between the observable and the latent variables.
 
 Models are trained by using the hyperparameters shown in the table 3.1.1.
-The figure 3.1.1 shows the learning curves of the following 
-training performance:
+The figure 3.1.1 (a) and (b) show the learning curves of the following 
+training performances, respectively.
 - Representive error, `mean((Y-Yhat)^2)`, where `Y and Yhat` are the original observed varibales and the represented ones, respectively.
 - Discrepancy between the referenced distribution of the latent variables and the ones projected by the encoder of trained model. Note that the discrepancy is measured by the two norm wasserstein distance.
 
-The learning curves tell us that the training has converged at the end of the training.
+The learning curves tell us that the training has converged at the end of the training iterations.
 
-The figure 3.1.2 shows an example of the projection of a trained model chosen randomly among the trained models.
-The figure 3.1.3 (a) shows the images projected through the encoder of the model.
-In this case, the image of the observed variables is approximated by an analytical function.
-The figure 3.1.3 (b) is the case of the decoder.
+The figure 3.1.2(a) (the figure 3.1.2(b) ) shows the images projected through the encoder (decoder) of the trained model which has the average performance among all the trained models.
+The left one is the input image of the observed (latent) variables approximated by an analytical function
+and the right one is obtained by projecting the input image via the trained encoder(decoder). 
 We found that 
-- the projected samples match well with the original samples and the distribution of the latent variables looks like the uniform distribution,
-- ,the hole mapped from the observable variable almost disappears from the image of the encoder
-- and the image of the decoder is topologically identified with the disk, even though the region around the hole is stretched.
+- The learning curve of representative error in the figure 3.1.1(a) and (b) tell us that the projected samples can match well with the original samples and the distribution of the latent variables looks like the uniform distribution.
+- The figure 3.1.2(a) shows that the hole mapped from the observable variable almost disappears from the encoder's projected image.
+- And, seeing the figure 3.1.2(b), the decoder's projected image is topologically identified with the disk, even though the region around the hole is stretched.
 
-The last findings says that the decoder as a map from the latent variable to the observable variable
-cannot preserve the topological structure.
+The last two findings say that the encoder and decoder cannot preserve the topological structure as a map between the observable variables and the latent ones.
+This might cause practical problems. For example, 
+if you optimize a function over a torus, 
+and if you plan to parametrize the design variable on the torus by the latent variable of the autoencoder,
+it might be possible that you find an infeasible solution at any point of the hole of the torus
+because it exists a certain area on the latent variable which can be mapped on the hole of the torus.
+
+<img src = "./img/cs01b_representative_error.png" width = "50%"> 
+Fig 3.1.1(a) Learning curve of the representative error grouped by the number of layers in the network
+
+<img src = "./img/cs01b_latent_distribution_discrepancy.png" width = "50%"> 
+Fig 3.1.1(b) Learning curve of the discrepancy between the the referenced and the projected  latent variablee distributions grouped by the number of layers in the network
+
+<img src = "./img/encoder_projection_cbarbaUWpfmwvNQS.png" width = "50%"> 
+Fig 3.1.2(a) Input and output image of a trained encoder
+
+<img src = "./img/deccoder_projection_cbarbaUWpfmwvNQS.png" width = "50%"> 
+Fig 3.1.2(b) Input and output image of a trained decoder
