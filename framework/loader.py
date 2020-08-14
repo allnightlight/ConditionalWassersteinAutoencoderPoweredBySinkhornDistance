@@ -27,6 +27,8 @@ class Loader(object):
         self.environmentFactory = environmentFactory
         self.buildParameterFactory = buildParameterFactory
         self.store = store
+        store.update_db()
+        
         
     def load(self, buildParameterLabel, epoch = None, buildParameterKey = None):
         

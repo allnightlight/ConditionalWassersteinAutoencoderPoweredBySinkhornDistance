@@ -6,6 +6,7 @@ Created on 2020/07/11
 import os
 import shutil
 import unittest
+import numpy as np
 
 from builder import Builder
 from loader import Loader
@@ -30,6 +31,11 @@ class Test(unittest.TestCase):
         cls.dbPath = "testDb.sqlite"
         if os.path.exists(cls.dbPath):
             os.remove(cls.dbPath)
+            
+        cls.trainLogFolderPath = "./testTrainLogFolderPath"
+        if os.path.exists(cls.trainLogFolderPath):
+            os.remove(cls.trainLogFolderPath)
+        
     
     def setUp(self):
         unittest.TestCase.setUp(self)
@@ -38,7 +44,7 @@ class Test(unittest.TestCase):
         environmentFactory = WaeEnvironmentFactory()
         trainerFactory = WaeTrainerFactory()        
         buildParameterFactory = WaeBuildParameterFactory()
-        store = Store(self.dbPath)
+        store = Store(self.dbPath, self.trainLogFolderPath)
         logger = MyLogger(console_print=True)
         
         self.builder = Builder(trainerFactory, agentFactory, environmentFactory, store, logger)
@@ -47,7 +53,9 @@ class Test(unittest.TestCase):
         for k1 in range(2):
             nIntervalSave = 10
             nEpoch = 20
-            self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
+            nLayer = int(np.random.choice((1,2)))
+            
+            self.buildParameters.append(WaeBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1), nLayer = nLayer, eps_given_sinkhorn = 0.1, tol_sinkhorn = 0.1))
         
         self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
@@ -59,6 +67,10 @@ class Test(unittest.TestCase):
                     
         if os.path.exists(WaeAgent.checkPointPath):
             shutil.rmtree(WaeAgent.checkPointPath)
+            
+        if os.path.exists(cls.trainLogFolderPath):
+            shutil.rmtree(cls.trainLogFolderPath)
+
 
 
     def test001(self):

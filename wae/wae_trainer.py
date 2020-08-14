@@ -78,9 +78,7 @@ class WaeTrainer(SlTrainer):
             _alpha = _p * 0
             _beta = _q * 0
             cnt = 0
-    
-            assert max(_M.shape) <= 2**6, "The shape of M is %s. That exceeds the limitation: 64" % str(_M.shape)
-    
+        
             while True:
     
                 _P = torch.exp(-(_M-_alpha-_beta)/_eps -1)

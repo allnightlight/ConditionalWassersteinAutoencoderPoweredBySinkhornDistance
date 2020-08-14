@@ -6,6 +6,7 @@ Created on 2020/07/11
 import os
 import shutil
 import unittest
+import numpy as np
 
 from wae_agent import WaeAgent
 from wae_environment import WaeEnvironment
@@ -26,8 +27,9 @@ class Test(unittest.TestCase):
         nZ = environment.nZ
         nH = 2**5
         nXi = 2
+        nLayer = int(np.random.choice((1,2)))
         
-        agent = WaeAgent(nX, nZ, nH, nXi, cluster_interval=3.0)
+        agent = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval=3.0)
         
         trainer = WaeTrainer(agent, environment, reg_param = 0.1)
                 
