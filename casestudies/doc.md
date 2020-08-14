@@ -44,7 +44,7 @@ owing to the sinkhorn algorithm.
 # 3-1. Case study #1:
 
 This case study builds representitive models
-of a two-dimensional torus
+of a two-dimensional 1-torus
 by using the autoencoder with the latent variables
 sampled from the two dimentional uniformal distribution.
 We show an example of the consequence caused by the topological mismatch 
@@ -53,25 +53,26 @@ between the observable and the latent variables.
 Models are trained by using the hyperparameters shown in the table 3.1.1.
 The figure 3.1.1 (a) and (b) show the learning curves of the following 
 training performances, respectively.
-- Representive error, `mean((Y-Yhat)^2)`, where `Y and Yhat` are the original observed varibales and the represented ones, respectively.
-- Discrepancy between the referenced distribution of the latent variables and the ones projected by the encoder of trained model. Note that the discrepancy is measured by the two norm wasserstein distance.
+- Representative error, `mean((Y-Yhat)^2)`, where `Y and Yhat` are the original observed varibales and the represented ones, respectively.
+- Discrepancy between the referenced distribution of the latent variables and the ones on which the observable variables distribution is projected through the trained encoder. Note that the discrepancy is measured by the absolute norm wasserstein distance.
 
 The learning curves tell us that the training has converged at the end of the training iterations.
 
-The figure 3.1.2(a) (the figure 3.1.2(b) ) shows the images projected through the encoder (decoder) of the trained model which has the average performance among all the trained models.
-The left one is the input image of the observed (latent) variables approximated by an analytical function
-and the right one is obtained by projecting the input image via the trained encoder(decoder). 
-We found that 
-- The learning curve of representative error in the figure 3.1.1(a) and (b) tell us that the projected samples can match well with the original samples and the distribution of the latent variables looks like the uniform distribution.
-- The figure 3.1.2(a) shows that the hole mapped from the observable variable almost disappears from the encoder's projected image.
-- And, seeing the figure 3.1.2(b), the decoder's projected image is topologically identified with the disk, even though the region around the hole is stretched.
+The figure 3.1.2(a) (or the figure 3.1.2(b)) shows the images projected through the encoder (or decoder) of the trained model which has the average performance among the trained models with `nLayer=7`.
+The left one is the input image of the observed (or latent) variables approximated by an analytical function
+and the right one is obtained by projecting the input image via the trained encoder(or decoder). 
+Here are our findins.
+- The learning curves in the figure 3.1.1(a) and (b) tell us that the projected samples can match well with the original samples and the distribution of the latent variables looks like the uniform distribution.
+- The figure 3.1.2(a) shows that the hole mapped from the observable variables is fairly small and that the latent variables distribution is alomost covered by the projected one.
+- Seeing the figure 3.1.2(b), the decoder's projected image is topologically identified with the disk, even though the region around the hole is stretched.
 
-The last two findings say that the encoder and decoder cannot preserve the topological structure as a map between the observable variables and the latent ones.
+The last two findings say that the encoder and decoder as maps between the observable variables and the latent ones cannot preserve the topological structure.
 This might cause practical problems. For example, 
-if you optimize a function over a torus, 
-and if you plan to parametrize the design variable on the torus by the latent variable of the autoencoder,
-it might be possible that you find an infeasible solution at any point of the hole of the torus
-because it exists a certain area on the latent variable which can be mapped on the hole of the torus.
+if you optimize a function defined on a 1-torus
+and if you plan to parameterize the decision variables on the torus by using the latent variables composed by autoencoder,
+it might be possible that you find a solution at a point of the hole of the torus,
+which is of course infeasible, 
+because it exists a certain area in the latent variable which can be mapped on the hole of the torus.
 
 Table 3.1.1. Hyper parameters 
 
