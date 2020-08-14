@@ -73,6 +73,16 @@ and if you plan to parametrize the design variable on the torus by the latent va
 it might be possible that you find an infeasible solution at any point of the hole of the torus
 because it exists a certain area on the latent variable which can be mapped on the hole of the torus.
 
+Table 3.1.1. Hyper parameters 
+
+|name|description|value|
+|-|-|-|
+|nEpoch|the number of epochs | 512|
+|nBatch|the sample size of a single batch|512|
+|nH|the number of units of the encoder and decoder network|512|
+|nLayer|the number of layers of the encoder and decoder network| 3, 5 and 7|
+|reg_param|the regularization parameter | 10 |
+
 <img src = "./img/cs01b_representative_error.png" width = "50%"> 
 Fig 3.1.1(a) Learning curve of the representative error grouped by the number of layers in the network
 
