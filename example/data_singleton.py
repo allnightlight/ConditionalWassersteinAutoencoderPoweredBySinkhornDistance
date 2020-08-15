@@ -75,7 +75,7 @@ Select
             if conn is not None:                
                 conn.close()
 
-        assert data is not None, "FAILED TO LOADING DATA FROM THE GIVEN DB: %s" % self.dbFilePath
+        assert data is not None, "FAILED TO LOADING DATA FROM THE GIVEN DB: %s" % dbFilePath
                         
         self.data = data[:, np.argsort(np.argsort(tags))]
         self.timestamp = timestamp

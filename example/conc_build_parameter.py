@@ -11,7 +11,7 @@ class ConcBuildParameter(WaeBuildParameter):
     '''
 
 
-    def __init__(self, nIntervalSave=2 ** 4, nEpoch=2 ** 7, label="None", nBatch=2 ** 5, nH=2 ** 3, nXi=2, reg_param=0.1, cluster_interval=3.0,
+    def __init__(self, nIntervalSave=2 ** 4, nEpoch=2 ** 7, label="None", nBatch=2 ** 5, nH=2 ** 3, nXi=2, nLayer=1, reg_param=0.1, cluster_interval=3.0,
                  dbFilePath = None
                  ,ev_tag = None
                  ,pv_tags = None
@@ -19,7 +19,7 @@ class ConcBuildParameter(WaeBuildParameter):
                  ,period_test_str = None
                  ,samplingIntervalMinute = None
                  ):
-        WaeBuildParameter.__init__(self, nIntervalSave=nIntervalSave, nEpoch=nEpoch, label=label, nBatch=nBatch, nH=nH, nXi=nXi, reg_param=reg_param, cluster_interval=cluster_interval)
+        WaeBuildParameter.__init__(self, nIntervalSave=nIntervalSave, nEpoch=nEpoch, label=label, nBatch=nBatch, nH=nH, nXi=nXi, nLayer=nLayer, reg_param=reg_param, cluster_interval=cluster_interval)
         
         self.dbFilePath=dbFilePath
         self.ev_tag=ev_tag
