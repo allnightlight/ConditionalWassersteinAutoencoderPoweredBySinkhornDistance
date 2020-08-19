@@ -3,10 +3,12 @@ Created on 2020/08/02
 
 @author: ukai
 '''
-import numpy as np
-import unittest
-from conc_environment_cs01a import ConcEnvironmentCs01a
 from builtins import isinstance
+import unittest
+
+from conc_environment_cs01a import ConcEnvironmentCs01a
+from conc_environment_cs02a import ConcEnvironmentCs02a
+import numpy as np
 
 
 class Test(unittest.TestCase):
@@ -35,6 +37,22 @@ class Test(unittest.TestCase):
         
             assert np.all(Z[:,0] == 1)
 
+
+    def test002(self):
+        
+        nBatch = 2**5
+        
+        environment = ConcEnvironmentCs02a(nBatch)
+        assert isinstance(environment, ConcEnvironmentCs02a)
+        
+        environment.loadData()
+        
+        for batchDataEnvironment in environment.generateBatchDataIterator():
+            X = batchDataEnvironment._X.data.numpy() # (*, nX)
+            Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
+            assert X.shape == (nBatch, environment.nX)
+            assert Z.shape == (nBatch, environment.nZ)            
+            assert np.all(Z[:,0] == 1)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test001']

@@ -49,6 +49,15 @@ class Test(unittest.TestCase):
             nIntervalSave = 10
             nEpoch = 20
             self.buildParameters.append(ConcBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
+            
+        for k1 in range(2):
+            nIntervalSave = 10
+            nEpoch = 20
+            self.buildParameters.append(ConcBuildParameter(int(nIntervalSave), int(nEpoch)
+                                                           , label="test case study 02a " + str(k1)
+                                                           , nXi = 3
+                                                           , target_casestudy = "cs02a"
+                                                           ))
         
         self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
