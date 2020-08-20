@@ -115,3 +115,24 @@ the uniformal random distribution over a ring as follow:
 
 Note that the observable variables' distribution is twisted,
 while the latent variables' one is not.
+
+# 3-3. Case study #3:
+
+The third example differs with the above case studies
+in that it's concerned with a conditional probability.
+While the probabilistic variables for the above cases follow the single distribution, 
+the variable of this case follows two differents distributions depending on an external variable.
+
+We concretely see the configuration of our experiment.
+The environment samples values from one of a pair of two-toruses
+and an independently distributed variable chooses which the torus is active.
+We assume that the toruses are crossed each other in the three dimensional space.
+It's impossible to apart one from another by any continous transformation.
+
+The latent variable of the agents are also sampled from
+one of a pair of two-toruses, however, in contrast with the environment,
+they are not crossed but they stand in pararell.
+The choise of a torus is controlled by the same variable of the environment.
+
+These two distributions are topologically different each other.
+We see what happens to the autoencoders' training due to this discrepancy.
