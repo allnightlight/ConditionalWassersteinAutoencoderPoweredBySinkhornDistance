@@ -95,3 +95,23 @@ Fig 3.1.2(a) Input and output image of a trained encoder
 
 <img src = "./img/deccoder_projection_cbarbaUWpfmwvNQS.png" width = "50%"> 
 Fig 3.1.2(b) Input and output image of a trained decoder
+
+# 3-2. Case study #2:
+
+We move on the next case study to see another type of topological mismatch:
+the one distributes on the twisted surface in the three dimensional space,
+while the distribution of the other, not twisted.
+It's impossible that the autoencoders consilliate this difference
+since the twisted image (or not twisted) is mapped on to the twisted image (or not twisted).
+Wee se the consequence of the wasserstein autoencoders' training subject to this toplogical mismatch.
+
+Here is the specifications of our experiment.
+The environment generates the dataset sampled randomly from the mobius band.
+More precisely say that the the variables `x, y and z` in the three dimensional space distribute as follow:
+
+On the other hand,
+we define the agent that the distribution of the latent variables `u, v and w` follows
+the uniformal random distribution over a ring as follow:
+
+Note that the observable variables' distribution is twisted,
+while the latent variables' one is not.
