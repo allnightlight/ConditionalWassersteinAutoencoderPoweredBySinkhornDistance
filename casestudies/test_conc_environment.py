@@ -45,8 +45,14 @@ class Test(unittest.TestCase):
         
         environment = ConcEnvironmentCs02a(nBatch)
         assert isinstance(environment, ConcEnvironmentCs02a)
-        
+                
         environment.loadData()
+        cach = environment.dataX
+        
+        environment = ConcEnvironmentCs02a(nBatch)
+        environment.loadData() 
+        assert np.all(cach == environment.dataX)
+
         
         for batchDataEnvironment in environment.generateBatchDataIterator():
             X = batchDataEnvironment._X.data.numpy() # (*, nX)
@@ -54,6 +60,13 @@ class Test(unittest.TestCase):
             assert X.shape == (nBatch, environment.nX)
             assert Z.shape == (nBatch, environment.nZ)            
             assert np.all(Z[:,0] == 1)
+            
+        batchDataEnvironment = environment.getTestData()
+        X = batchDataEnvironment._X.data.numpy() # (*, nX)
+        Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
+        assert X.shape == (environment.nSampleTest, environment.nX)
+        assert Z.shape == (environment.nSampleTest, environment.nZ)            
+        assert np.all(Z[:,0] == 1)
 
 
     def test003(self):
@@ -64,6 +77,11 @@ class Test(unittest.TestCase):
         assert isinstance(environment, ConcEnvironmentCs03a)
         
         environment.loadData()
+        cach = environment.dataX
+        
+        environment = ConcEnvironmentCs03a(nBatch)
+        environment.loadData() 
+        assert np.all(cach == environment.dataX)
         
         for batchDataEnvironment in environment.generateBatchDataIterator():
             X = batchDataEnvironment._X.data.numpy() # (*, nX)
@@ -71,6 +89,13 @@ class Test(unittest.TestCase):
             assert X.shape == (nBatch, environment.nX)
             assert Z.shape == (nBatch, environment.nZ)            
             assert np.all(Z[:,0] + Z[:,1] == 1)
+
+        batchDataEnvironment = environment.getTestData()
+        X = batchDataEnvironment._X.data.numpy() # (*, nX)
+        Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
+        assert X.shape == (environment.nSampleTest, environment.nX)
+        assert Z.shape == (environment.nSampleTest, environment.nZ)            
+        assert np.all(Z[:,0] + Z[:,1] == 1)
 
 
 if __name__ == "__main__":
