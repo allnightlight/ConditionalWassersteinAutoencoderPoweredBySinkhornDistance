@@ -116,6 +116,26 @@ the uniformal random distribution over a ring as follow:
 Note that the observable variables' distribution is twisted,
 while the latent variables' one is not.
 
+Table 3.2.1. Hyper parameters 
+
+|name|description|value|
+|-|-|-|
+|nEpoch|the number of epochs | 512|
+|nBatch|the sample size of a single batch|512|
+|nH|the number of units of the encoder and decoder network|128|
+|nLayer|the number of layers of the encoder and decoder network|3|
+|reg_param|the regularization parameter | 10 |
+
+<img src = "./img/cs02a_score.png" width = "50%"> 
+Fig 3.2.1 Learning curve of the representative error and the discrepancy between the the referenced and the projected  latent variable distributions
+
+<img src = "./img/cs02a_encoder_projection_SQMQIE81fexBjY9p_azim=270.png" width = "50%"> 
+Fig 3.2.2(a) Input and output image of a trained encoder
+
+<img src = "./img/cs02a_deccoder_projection_SQMQIE81fexBjY9p_azim=000.png" width = "50%"> 
+Fig 3.2.2(b) Input and output image of a trained decoder
+
+
 # 3-3. Case study #3:
 
 The third example differs with the above case studies
