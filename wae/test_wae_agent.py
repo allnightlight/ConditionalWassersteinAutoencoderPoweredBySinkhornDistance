@@ -29,8 +29,8 @@ class Test(unittest.TestCase):
         nXi = 2
         nLayer = 2
         
-        agent = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval = 3.0)
-        agentAnother = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval = 3.0)
+        agent = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval = 3.0, activation = "tanh")
+        agentAnother = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval = 3.0, activation = "tanh")
                 
         self.agent = agent
         self.agentAnother = agentAnother

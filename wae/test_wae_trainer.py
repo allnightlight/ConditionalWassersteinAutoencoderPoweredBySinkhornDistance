@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
         nXi = 2
         nLayer = int(np.random.choice((1,2)))
         
-        agent = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval=3.0)
+        agent = WaeAgent(nX, nZ, nH, nXi, nLayer, cluster_interval=3.0, activation="relu")
         
         trainer = WaeTrainer(agent, environment, reg_param = 0.1)
                 
