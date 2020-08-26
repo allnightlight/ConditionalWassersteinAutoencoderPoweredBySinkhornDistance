@@ -14,8 +14,8 @@ class ConcAgentCs03a(WaeAgent):
     '''
 
 
-    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval, R = 1.0, r = 0.1):
-        WaeAgent.__init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval)
+    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval, activation, R = 1.0, r = 0.1):
+        WaeAgent.__init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval, activation)
         assert nXi == 3
         assert nZ == 2
         

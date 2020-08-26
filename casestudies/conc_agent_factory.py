@@ -32,7 +32,8 @@ class ConcAgentFactory(WaeAgentFactory):
                             , nH = buildParameter.nH
                             , nXi = buildParameter.nXi
                             , nLayer = buildParameter.nLayer
-                            , cluster_interval = buildParameter.cluster_interval)
+                            , cluster_interval = buildParameter.cluster_interval
+                            , activation = buildParameter.activation)
             
         if buildParameter.target_casestudy == "cs02a":
             
@@ -43,7 +44,8 @@ class ConcAgentFactory(WaeAgentFactory):
                             , nH = buildParameter.nH
                             , nXi = buildParameter.nXi
                             , nLayer = buildParameter.nLayer
-                            , cluster_interval = buildParameter.cluster_interval)
+                            , cluster_interval = buildParameter.cluster_interval
+                            , activation = buildParameter.activation)
             
         if buildParameter.target_casestudy == "cs03a":
             
@@ -54,4 +56,5 @@ class ConcAgentFactory(WaeAgentFactory):
                             , nH = buildParameter.nH
                             , nXi = buildParameter.nXi
                             , nLayer = buildParameter.nLayer
-                            , cluster_interval = buildParameter.cluster_interval)
+                            , cluster_interval = buildParameter.cluster_interval
+                            , activation = buildParameter.activation)

@@ -14,8 +14,8 @@ class ConcAgentCs01a(WaeAgent):
     '''
 
 
-    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval):
-        WaeAgent.__init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval)
+    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval, activation):
+        WaeAgent.__init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval, activation)
         
 
     # <<protected>>    

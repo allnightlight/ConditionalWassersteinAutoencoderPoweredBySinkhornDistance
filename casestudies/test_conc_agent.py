@@ -21,7 +21,7 @@ class Test(unittest.TestCase):
         
         nX, nZ, nH, nXi, nLayer, cluster_interval = (2, 1, 2**3, 2, 2, 3)
         
-        agent = ConcAgentCs01a(nX, nZ, nH, nXi, nLayer, cluster_interval)
+        agent = ConcAgentCs01a(nX, nZ, nH, nXi, nLayer, cluster_interval, activation="relu")
         
         assert isinstance(agent, ConcAgentCs01a)
         
@@ -51,7 +51,7 @@ class Test(unittest.TestCase):
         
         nX, nZ, nH, nXi, nLayer, cluster_interval = (environment.nX, environment.nZ, 3, 3, 2, 3)
         
-        agent = ConcAgentCs02a(nX, nZ, nH, nXi, nLayer, cluster_interval)
+        agent = ConcAgentCs02a(nX, nZ, nH, nXi, nLayer, cluster_interval, activation="relu")
         
         assert isinstance(agent, ConcAgentCs02a)
         
@@ -71,7 +71,7 @@ class Test(unittest.TestCase):
         
         nX, nZ, nH, nXi, nLayer, cluster_interval = (environment.nX, environment.nZ, 3, 3, 2, 3)
         
-        agent = ConcAgentCs03a(nX, nZ, nH, nXi, nLayer, cluster_interval)
+        agent = ConcAgentCs03a(nX, nZ, nH, nXi, nLayer, cluster_interval, activation="relu")
         
         assert isinstance(agent, ConcAgentCs03a)
         
