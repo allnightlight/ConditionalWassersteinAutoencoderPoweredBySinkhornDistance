@@ -103,15 +103,19 @@ the one distributes on the twisted surface in the three dimensional space,
 while the distribution of the other, not twisted.
 It's impossible that the autoencoders consilliate this difference
 since the twisted image (or not twisted) is mapped on to the twisted image (or not twisted).
-Wee se the consequence of the wasserstein autoencoders' training subject to this toplogical mismatch.
+We see the consequence of the wasserstein autoencoders' training subject to this toplogical mismatch.
 
 Here is the specifications of our experiment.
 The environment generates the dataset sampled randomly from the mobius band.
-More precisely say that the the variables `x, y and z` in the three dimensional space distribute as follow:
+More precisely say that the the variables `x, y and z` in the three dimensional space randomly distribute on the surface difined in 
+[site](https://en.wikipedia.org/wiki/M%C3%B6bius_strip#Geometry_and_topology)
+.
 
 On the other hand,
 we define the agent that the distribution of the latent variables `u, v and w` follows
 the uniformal random distribution over a ring as follow:
+
+<img src = "./img/texclip20200826105519.png" width = "83%">
 
 Note that the observable variables' distribution is twisted,
 while the latent variables' one is not.
@@ -120,7 +124,7 @@ We train agents by using the hyperparameters in the table 3.2.1 and
 the figure 3.2.1 shows the learning curves of the pair of performances
 mentioned already in the case study #1.
 It tolds us that the training has converged at the end of the final epoch.
-We see below in detail an agent among the trained agents around the average performance.
+We see below in detail an agent among trained agents around the average performance.
 
 The figure 3.2.2(a) shows how the trained encoder maps the observable variable image
 (the blue in the left) to the latent variable image (the blue one in the right).
