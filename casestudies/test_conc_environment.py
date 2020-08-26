@@ -9,6 +9,7 @@ import unittest
 from conc_environment_cs01a import ConcEnvironmentCs01a
 from conc_environment_cs02a import ConcEnvironmentCs02a
 from conc_environment_cs03a import ConcEnvironmentCs03a
+from conc_environment_cs03b import ConcEnvironmentCs03b
 import numpy as np
 
 
@@ -73,29 +74,34 @@ class Test(unittest.TestCase):
         
         nBatch = 2**5
         
-        environment = ConcEnvironmentCs03a(nBatch)
-        assert isinstance(environment, ConcEnvironmentCs03a)
+        environment_a = ConcEnvironmentCs03a(nBatch)
+        assert isinstance(environment_a, ConcEnvironmentCs03a)
         
-        environment.loadData()
-        cach = environment.dataX
+        environment_b = ConcEnvironmentCs03b(nBatch)
+        assert isinstance(environment_b, ConcEnvironmentCs03b)
         
-        environment = ConcEnvironmentCs03a(nBatch)
-        environment.loadData() 
-        assert np.all(cach == environment.dataX)
+        for environment in (environment_a, environment_b):
         
-        for batchDataEnvironment in environment.generateBatchDataIterator():
+            environment.loadData()
+            cach = environment.dataX
+            
+            environment = ConcEnvironmentCs03a(nBatch)
+            environment.loadData() 
+            assert np.all(cach == environment.dataX)
+            
+            for batchDataEnvironment in environment.generateBatchDataIterator():
+                X = batchDataEnvironment._X.data.numpy() # (*, nX)
+                Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
+                assert X.shape == (nBatch, environment.nX)
+                assert Z.shape == (nBatch, environment.nZ)            
+                assert np.all(Z[:,0] + Z[:,1] == 1)
+    
+            batchDataEnvironment = environment.getTestData()
             X = batchDataEnvironment._X.data.numpy() # (*, nX)
             Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
-            assert X.shape == (nBatch, environment.nX)
-            assert Z.shape == (nBatch, environment.nZ)            
+            assert X.shape == (environment.nSampleTest, environment.nX)
+            assert Z.shape == (environment.nSampleTest, environment.nZ)            
             assert np.all(Z[:,0] + Z[:,1] == 1)
-
-        batchDataEnvironment = environment.getTestData()
-        X = batchDataEnvironment._X.data.numpy() # (*, nX)
-        Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
-        assert X.shape == (environment.nSampleTest, environment.nX)
-        assert Z.shape == (environment.nSampleTest, environment.nZ)            
-        assert np.all(Z[:,0] + Z[:,1] == 1)
 
 
 if __name__ == "__main__":

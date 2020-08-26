@@ -43,16 +43,15 @@ class Test(unittest.TestCase):
         logger = MyLogger(console_print=True)
         
         self.builder = Builder(trainerFactory, agentFactory, environmentFactory, store, logger)
+
+        nIntervalSave = 1
+        nEpoch = 2
         
         self.buildParameters = []
         for k1 in range(2):
-            nIntervalSave = 10
-            nEpoch = 20
             self.buildParameters.append(ConcBuildParameter(int(nIntervalSave), int(nEpoch), label="test" + str(k1)))
              
         for k1 in range(2):
-            nIntervalSave = 10
-            nEpoch = 20
             self.buildParameters.append(ConcBuildParameter(int(nIntervalSave), int(nEpoch)
                                                            , label="test case study 02a " + str(k1)
                                                            , nXi = 3
@@ -60,14 +59,18 @@ class Test(unittest.TestCase):
                                                            ))
 
         for k1 in range(2):
-            nIntervalSave = 10
-            nEpoch = 20
             self.buildParameters.append(ConcBuildParameter(int(nIntervalSave), int(nEpoch)
                                                            , label="test case study 03a " + str(k1)
                                                            , nXi = 3
                                                            , target_casestudy = "cs03a"
                                                            ))
 
+        for k1 in range(2):
+            self.buildParameters.append(ConcBuildParameter(int(nIntervalSave), int(nEpoch)
+                                                           , label="test case study 03b " + str(k1)
+                                                           , nXi = 3
+                                                           , target_casestudy = "cs03b"
+                                                           ))
         
         self.loader = Loader(agentFactory, buildParameterFactory, environmentFactory, store)
         
