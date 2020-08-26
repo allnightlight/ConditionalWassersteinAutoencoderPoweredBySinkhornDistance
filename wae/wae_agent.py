@@ -8,7 +8,7 @@ from builtins import isinstance
 import os
 
 import torch
-from torch.nn import Module, Sequential, Linear, ReLU
+from torch.nn import Module, Sequential, Linear, ReLU, Tanh
 
 import numpy as np
 from sl_agent import SlAgent
@@ -24,25 +24,32 @@ class WaeAgent(SlAgent, Module):
 
     checkPointPath = "./checkpoint"
 
-    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval):
+    def __init__(self, nX, nZ, nH, nXi, nLayer, cluster_interval, activation):
         '''
         Constructor
         '''
         
         super(WaeAgent, self).__init__()
         
-        stacks = [Linear(nX, nH), ReLU()]
+        Activation = None
+        if activation == "relu":
+            Activation = ReLU()
+        if activation == "tanh":
+            Activation = Tanh()
+        assert Activation is not None
+        
+        stacks = [Linear(nX, nH), Activation]
         for _ in range(nLayer - 1):
             stacks.append(Linear(nH, nH))
-            stacks.append(ReLU())
+            stacks.append(Activation)
         stacks.append(Linear(nH, nXi))
         
         enc = Sequential(*stacks)
         
-        stacks = [Linear(nXi, nH), ReLU()]
+        stacks = [Linear(nXi, nH), Activation]
         for _ in range(nLayer - 1):
             stacks.append(Linear(nH, nH))
-            stacks.append(ReLU())
+            stacks.append(Activation)
         stacks.append(Linear(nH, nX))
         
         dec = Sequential(*stacks)
