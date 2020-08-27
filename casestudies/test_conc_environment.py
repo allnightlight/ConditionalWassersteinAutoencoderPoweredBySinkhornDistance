@@ -10,6 +10,7 @@ from conc_environment_cs01a import ConcEnvironmentCs01a
 from conc_environment_cs02a import ConcEnvironmentCs02a
 from conc_environment_cs03a import ConcEnvironmentCs03a
 from conc_environment_cs03b import ConcEnvironmentCs03b
+from conc_environment_cs03c import ConcEnvironmentCs03c
 import numpy as np
 
 
@@ -80,28 +81,26 @@ class Test(unittest.TestCase):
         environment_b = ConcEnvironmentCs03b(nBatch)
         assert isinstance(environment_b, ConcEnvironmentCs03b)
         
-        for environment in (environment_a, environment_b):
+        environment_c = ConcEnvironmentCs03c(nBatch)
+        assert isinstance(environment_c, ConcEnvironmentCs03c)
         
-            environment.loadData()
-            cach = environment.dataX
-            
-            environment = ConcEnvironmentCs03a(nBatch)
+        for environment in (environment_a, environment_b, environment_c):
+                        
             environment.loadData() 
-            assert np.all(cach == environment.dataX)
             
             for batchDataEnvironment in environment.generateBatchDataIterator():
                 X = batchDataEnvironment._X.data.numpy() # (*, nX)
                 Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
                 assert X.shape == (nBatch, environment.nX)
                 assert Z.shape == (nBatch, environment.nZ)            
-                assert np.all(Z[:,0] + Z[:,1] == 1)
+                assert np.all(np.sum(Z, axis=-1) == 1)
     
             batchDataEnvironment = environment.getTestData()
             X = batchDataEnvironment._X.data.numpy() # (*, nX)
             Z = batchDataEnvironment._Z.data.numpy() # (*, nZ
             assert X.shape == (environment.nSampleTest, environment.nX)
             assert Z.shape == (environment.nSampleTest, environment.nZ)            
-            assert np.all(Z[:,0] + Z[:,1] == 1)
+            assert np.all(np.sum(Z, axis=-1) == 1)
 
 
 if __name__ == "__main__":
