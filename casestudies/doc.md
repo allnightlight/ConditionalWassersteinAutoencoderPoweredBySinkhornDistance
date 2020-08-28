@@ -180,10 +180,10 @@ Table 3.2.1. Hyper parameters
 <img src = "./img/cs02a_score.png" width = "50%"> 
 Fig 3.2.1 Learning curve of the representative error and the discrepancy between the the referenced and the projected  latent variable distributions
 
-<img src = "./img/cs02a_encoder_projection_SQMQIE81fexBjY9p_azim=270.png" width = "50%"> 
+<img src = "./img/cs02a_encoder_projection_SQMQIE81fexBjY9p_azim=270.png" width = "75%"> 
 Fig 3.2.2(a) Input and output image of a trained encoder
 
-<img src = "./img/cs02a_deccoder_projection_SQMQIE81fexBjY9p_azim=000.png" width = "50%"> 
+<img src = "./img/cs02a_deccoder_projection_SQMQIE81fexBjY9p_azim=000.png" width = "75%"> 
 Fig 3.2.2(b) Input and output image of a trained decoder
 
 
@@ -212,28 +212,11 @@ Table 3.3.1. Hyper parameters
 <img src = "./img/cs03c_score.png" width = "50%"> 
 Fig 3.3.1 Learning curve of the representative error and the discrepancy between the the referenced and the projected  latent variable distributions
 
-<img src = "./img/cs03c_encoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "50%"> 
+<img src = "./img/cs03c_encoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "75%"> 
 Fig 3.3.2(a) Input and output image of a trained encoder
 
-<img src = "./img/cs03c_decoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "50%"> 
-Fig 3.3.2(b) Input and output image of a trained decoder
-
-100%
-<img src = "./img/cs03c_decoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "100%"> 
-Fig 3.3.2(b) Input and output image of a trained decoder
-
-83%
-<img src = "./img/cs03c_decoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "83%"> 
-Fig 3.3.2(b) Input and output image of a trained decoder
-
-75%
 <img src = "./img/cs03c_decoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "75%"> 
 Fig 3.3.2(b) Input and output image of a trained decoder
-
-63%
-<img src = "./img/cs03c_decoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "63%"> 
-Fig 3.3.2(b) Input and output image of a trained decoder
-
 
 
 # 4. References
