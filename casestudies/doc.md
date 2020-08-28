@@ -17,7 +17,7 @@ In our case studies, we define these two networks as the multilayer perceptron w
 
 ## 2-2. Environment
 
-Environments generate datasets sampled from distributions of observable variables. The distributions are defined in each case studies.
+Environments generate datasets sampled from distributions of observable variables. The distributions are defined in each case study.
 
 ## 2-3. Trainer
 
@@ -69,7 +69,7 @@ Fig 3.1.2(b) Input and output image of a trained decoder
 
 # 3-2. Case study #2:
 
-We move on the next case study to see another type of topological mismatch:
+We move on to the next case study to see another type of topological mismatch:
 the one distributes on the twisted surface in the three dimensional space,
 while the distribution of the other, not twisted.
 It's impossible that the autoencoders consilliate this difference
@@ -78,7 +78,7 @@ We see the consequence of the autoencoders' training subject to this topological
 
 Here is the specifications of our experiment.
 The environment generates the dataset sampled randomly from the mobius band.
-More precisely say that the the variables `x, y and z` in the three dimensional space randomly distribute on the surface defined in 
+More precisely say that the variables `x, y and z` in the three dimensional space randomly distribute on the surface defined in 
 [site](https://en.wikipedia.org/wiki/M%C3%B6bius_strip#Geometry_and_topology)
 .
 
@@ -144,7 +144,7 @@ and we see what happens to the autoencoders' training due to this discrepancy.
 
 Here is the configuration of agents and environments:
 - The environment randomly samples values from [a trefoil knot](https://en.wikipedia.org/wiki/Trefoil_knot#Descriptions) in three-dimensional space.
-- The latent variable of the agents are sampled from an unknot, namely a simple ring, in three-dimensional space.
+- The latent variables of the agents are sampled from an unknot, namely a simple ring, in three-dimensional space.
 
 The table 3.3.1 shows the hyperparameter set for the training.
 Note that small batch size is required in this training, 
@@ -158,7 +158,7 @@ Although the output image is close to the referenced latent variables distributi
 , the output image seemingly preserves the knots of the original image.
 - The figure 3.3.2(b) shows the referenced latent variables image, that is the simple circle,
 and its projected image by the trained decoder on the observable variables space.
-The output closed loop is approaching to the original trefoil knot,
+The output closed loop is approaching the original trefoil knot,
 However, it's hard to fit it completely because the projected image cannot make new knots on their own.
 
 In this way, even if the numerical evaluations of the error and the discrepancy of distributions are small,
