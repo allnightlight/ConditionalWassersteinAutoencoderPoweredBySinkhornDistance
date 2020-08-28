@@ -5,7 +5,7 @@ Data scientists often choose the uniform distribution
 or the normal distribution as the latent variable distribution
 when they build representetive models of datasets.
 For example,
-the studies of the GANs [1] and the VAEs[2] used the normal distribution.
+the studies of the GANs [1] and the VAEs[2] used the uniformal random distribution and the normal one, respectively.
 
 As the approximate function implimented by neural networks 
 is usually continuous,
@@ -31,8 +31,8 @@ This means that the topology of the given dataset is destroyed
 through the projction of the trained networks.
 
 In this short text,
-we study the topological mismatch with the SAE[3],
-which is enhanced based on the WAE[4] 
+we study the topological mismatch with the SAE[4],
+which is enhanced based on the WAE[3] 
 owing to the sinkhorn algorithm.
 
 
@@ -185,3 +185,20 @@ The choise of a torus is controlled by the same variable of the environment.
 
 These two distributions are topologically different each other.
 We see what happens to the autoencoders' training due to this discrepancy.
+
+# 4. References
+
+<ul>
+<li>[1]:
+Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio: “Generative Adversarial Networks”, 2014; <a href='http://arxiv.org/abs/1406.2661'>arXiv:1406.2661</a>.
+</li>
+<li>[2]:
+Diederik P Kingma, Max Welling: “Auto-Encoding Variational Bayes”, 2013; <a href='http://arxiv.org/abs/1312.6114'>arXiv:1312.6114</a>.
+</li>
+<li>[3]:
+Ilya Tolstikhin, Olivier Bousquet, Sylvain Gelly, Bernhard Schoelkopf: “Wasserstein Auto-Encoders”, 2017; <a href='http://arxiv.org/abs/1711.01558'>arXiv:1711.01558</a>.
+</li>
+<li>[4]:
+Giorgio Patrini, Rianne van den Berg, Patrick Forré, Marcello Carioni, Samarth Bhargav, Max Welling, Tim Genewein, Frank Nielsen: “Sinkhorn AutoEncoders”, 2018; <a href='http://arxiv.org/abs/1810.01118'>arXiv:1810.01118</a>.
+</li>
+</ul>
