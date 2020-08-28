@@ -11,25 +11,17 @@ In this short text, we study the consequence of autoencoders' training due to  t
 
 ## 2-1. Agent
 
-Agents consists of encoder and decoder networks.
-The encoder networks transform observable variables into latent variables,
-and the decoder networks reverse the latent variables into the represented observable variables.
+Agents consist of encoder and decoder networks. The encoder networks transform observable variables into latent variables, and the decoder networks reverse the latent variables into the represented observable variables.
 
-In our casestudies, we define these two networks as the multilayer perceptron
-with the shared hyperparameters: number of units `nH`, number of layers `nLayer` and activation function.
-The hyperparameters are defined in each case studies.
+In our case studies, we define these two networks as the multilayer perceptron with the hyperparameters: number of units `nH`, number of layers `nLayer` and activation function `activation`, where the encoder and decoder networks share the same hyperparameters. The values of the hyperparameters are defined in each case study.
 
 ## 2-2. Environment
 
-Environments generate datasets sampled from distributions of observable variables.
-The distributions are defined in each case studies
+Environments generate datasets sampled from distributions of observable variables. The distributions are defined in each case studies.
 
 ## 2-3. Trainer
 
-In all the case studies,
-we adopt Sinkhorn AutoEncoder (SAE) objective[4]
-as training criteria.
-The regularization parameter is defined in each case studies.
+In all the case studies, we adopt Sinkhorn AutoEncoder (SAE) objective[4] as training criteria. The regularization parameter `reg_param` is defined in each case study.
 
 
 # 3. Case studies
