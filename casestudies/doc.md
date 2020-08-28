@@ -74,7 +74,7 @@ the one distributes on the twisted surface in the three dimensional space,
 while the distribution of the other, not twisted.
 It's impossible that the autoencoders consilliate this difference
 since the twisted image (or not twisted) is mapped on to the twisted image (or not twisted).
-We see the consequence of the wasserstein autoencoders' training subject to this topological mismatch.
+We see the consequence of the autoencoders' training subject to this topological mismatch.
 
 Here is the specifications of our experiment.
 The environment generates the dataset sampled randomly from the mobius band.
@@ -111,7 +111,7 @@ As mentioned in the case of the encoder, the projected image looks like the refe
 though, since the referenced latent image is not twisted, a part of projected image is stretched and flipped in to fit to the twisted part of the mobius band.
 This happens because the decoder has to preserve the topological structure.
 
-Thus, however well wasserstein autoencoders regenerate datasets of distributions with complex structures
+Thus, however well autoencoders regenerate datasets of distributions with complex structures
 in the data-driven manner, they cannot represent topological structure.
 
 
@@ -162,7 +162,7 @@ The output closed loop is approaching to the original trefoil knot,
 However, it's hard to fit it completely because the projected image cannot make new knots on their own.
 
 In this way, even if the numerical evaluations of the error and the discrepancy of distributions are small,
-the wasserstein autoencoders are not capable of creating new knots.
+the autoencoders are not capable of creating new knots.
 The topological discrepancy cannot be resolved just by the autoencoders.
 
 Table 3.3.1. Hyper parameters 
