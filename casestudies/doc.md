@@ -74,17 +74,17 @@ the one distributes on the twisted surface in the three dimensional space,
 while the distribution of the other, not twisted.
 It's impossible that the autoencoders consilliate this difference
 since the twisted image (or not twisted) is mapped on to the twisted image (or not twisted).
-We see the consequence of the wasserstein autoencoders' training subject to this toplogical mismatch.
+We see the consequence of the wasserstein autoencoders' training subject to this topological mismatch.
 
 Here is the specifications of our experiment.
 The environment generates the dataset sampled randomly from the mobius band.
-More precisely say that the the variables `x, y and z` in the three dimensional space randomly distribute on the surface difined in 
+More precisely say that the the variables `x, y and z` in the three dimensional space randomly distribute on the surface defined in 
 [site](https://en.wikipedia.org/wiki/M%C3%B6bius_strip#Geometry_and_topology)
 .
 
 On the other hand,
 we define the agent that the distribution of the latent variables `u, v and w` follows
-the uniformal random distribution over a ring as follow:
+the uniform random distribution over a ring as follow:
 
 <img src = "./img/texclip20200826105519.png" width = "83%">
 
@@ -94,25 +94,24 @@ while the latent variables' one is not.
 We train agents by using the hyperparameters in the table 3.2.1 and 
 the figure 3.2.1 shows the learning curves of the pair of performances
 mentioned already in the case study #1.
-It tolds us that the training has converged at the end of the final epoch.
+It tells us that the training has converged at the end of the final epoch.
 We see below in detail an agent among trained agents around the average performance.
 
 The figure 3.2.2(a) shows how the trained encoder maps the observable variable image
 (the blue in the left) to the latent variable image (the blue one in the right).
 The projected image on the latent variable space represents well the referenced image(the gray one).
-Particulaly, the part mapped from the twisted part of the input image 
+Particularly, the part mapped from the twisted part of the input image 
 is pushed and piled up on the surface of the referenced image 
 due to the fact that the encoder cannot untangle the distortion of the mobius band.
 
 The figure 3.2.2(b) shows the referenced latent variable image(the red one in the left) 
-and its projected image on the observable variable space
-by the trained decoder (the red one in the right).
+and its projected image on the observable variable space(the red one in the right)
+by the trained decoder.
 As mentioned in the case of the encoder, the projected image looks like the referenced observable image(the gray one in the right),
-though, since the refrenced latent image is not twisted, a part of projected image is streched and flipped to 
-the twisted part of the mobius band.
+though, since the referenced latent image is not twisted, a part of projected image is stretched and flipped in to fit to the twisted part of the mobius band.
 This happens because the decoder has to preserve the topological structure.
 
-Thus, however well wasserstein autoencoders can regenerate datasets of distributions with complex structures
+Thus, however well wasserstein autoencoders regenerate datasets of distributions with complex structures
 in the data-driven manner, they cannot represent topological structure.
 
 
