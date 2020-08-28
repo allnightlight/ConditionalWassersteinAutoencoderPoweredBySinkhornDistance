@@ -191,27 +191,27 @@ Fig 3.2.2(b) Input and output image of a trained decoder
 
 In the third example, 
 we take account of the difference of knots as an example of topological mismatch.
-We try to represent a shape of one type of knot by transforming another shape of the other type of knot
+We try to represent a type of knot by transforming another type of knot
 and we see what happens to the autoencoders' training due to this discrepancy.
 
 Here is the configuration of agents and environments:
 - The environment randomly samples values from [a trefoil knot](https://en.wikipedia.org/wiki/Trefoil_knot#Descriptions) in three-dimensional space.
-- The latent variable of the agents are sampled from an unknot circle in three-dimensional space.
+- The latent variable of the agents are sampled from an unknot, namely a simple ring, in three-dimensional space.
 
 The table 3.3.1 shows the hyperparameter set for the training.
-Note that small batch size: `nBatch` is required in this training
-probably because small sized batch can break better the symmetry accross the x-y plane of the observable variables distribution.
-The training has already saturated at the end of epochs, which is confirmed in the learning curves on the figure 3.3.1.
+Note that small batch size is required in this training, 
+probably because smaller size batch can break better the symmetry accross the x-y plane which the observable variables distribution holds.
+The training has already saturated at the end of epochs, which is confirmed in the learning curves shown in the figure 3.3.1.
 
-We analyze a trained agent with the average performance.
-The figure 3.3.2(a) shows the transformation of the trained encoder from the observable variables distribution
-to the latent variables one.
+We select one trained agent among the trained agents around average performances and analyze it.
+- The figure 3.3.2(a) shows the transformation of the observable variables distribution
+on the latent variables space by the trained encoder
 Although the output image is close to the referenced latent variables distribution
 , the output image seemingly preserves the knots of the original image.
-The figure 3.3.2(b) shows the referenced latent variables image, namely the simple circle,
+- The figure 3.3.2(b) shows the referenced latent variables image, that is the simple circle,
 and its projected image by the trained decoder on the observable variables space.
 The output closed loop is approaching to the original trefoil knot,
-however, it's hard to fit because the projected image cannot make knots in their own.
+however, it's hard to fit it completely because the projected image cannot make new knots in their own.
 
 In this way, even if the numerical evaluations of the error and the discrepancy of distributions are small,
 the wasserstein autoencoders are not capable to create new knots.
