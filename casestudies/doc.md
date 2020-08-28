@@ -59,7 +59,7 @@ Table 3.1.1. Hyper parameters
 Fig 3.1.1(a) Learning curve of the representative error grouped by the number of layers in the network
 
 <img src = "./img/cs01b_latent_distribution_discrepancy.png" width = "50%"> 
-Fig 3.1.1(b) Learning curve of the discrepancy between the the referenced and the projected  latent variablee distributions grouped by the number of layers in the network
+Fig 3.1.1(b) Learning curve of the discrepancy between the the referenced and the projected  latent variable distributions grouped by the number of layers in the network
 
 <img src = "./img/encoder_projection_cbarbaUWpfmwvNQS.png" width = "50%"> 
 Fig 3.1.2(a) Input and output image of a trained encoder
