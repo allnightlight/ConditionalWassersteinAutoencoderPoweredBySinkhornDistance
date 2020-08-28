@@ -189,24 +189,14 @@ Fig 3.2.2(b) Input and output image of a trained decoder
 
 # 3-3. Case study #3:
 
-The third example differs with the above case studies
-in that it's concerned with a conditional probability.
-While the probabilistic variables for the above cases follow the single distribution, 
-the variable of this case follows two differents distributions depending on an external variable.
+In the third example, 
+we take account of the difference of knots as an example of topological mismatch.
+We try to represent a shape of one type of knot by transforming another shape of the other type of knot
+and we see what happens to the autoencoders' training due to this discrepancy.
 
-We concretely see the configuration of our experiment.
-The environment samples values from one of a pair of two-toruses
-and an independently distributed variable chooses which the torus is active.
-We assume that the toruses are crossed each other in the three dimensional space.
-It's impossible to apart one from another by any continous transformation.
-
-The latent variable of the agents are also sampled from
-one of a pair of two-toruses, however, in contrast with the environment,
-they are not crossed but they stand in pararell.
-The choise of a torus is controlled by the same variable of the environment.
-
-These two distributions are topologically different each other.
-We see what happens to the autoencoders' training due to this discrepancy.
+Here is the configuration of agents and environments:
+- The environment randomly samples values from [a trefoil knot](https://en.wikipedia.org/wiki/Trefoil_knot#Descriptions).
+- The latent variable of the agents are sampled from an unknot circle.
 
 # 4. References
 
