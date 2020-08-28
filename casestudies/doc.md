@@ -148,7 +148,7 @@ Here is the configuration of agents and environments:
 
 The table 3.3.1 shows the hyperparameter set for the training.
 Note that small batch size is required in this training, 
-probably because smaller size batch can break better the symmetry accross the x-y plane which the observable variables distribution holds.
+probably because a smaller size batch can break better the symmetry across the x-y plane which the observable variables distribution holds.
 The training has already saturated at the end of epochs, which is confirmed in the learning curves shown in the figure 3.3.1.
 
 We select one trained agent among the trained agents around average performances and analyze it.
@@ -159,10 +159,10 @@ Although the output image is close to the referenced latent variables distributi
 - The figure 3.3.2(b) shows the referenced latent variables image, that is the simple circle,
 and its projected image by the trained decoder on the observable variables space.
 The output closed loop is approaching to the original trefoil knot,
-however, it's hard to fit it completely because the projected image cannot make new knots in their own.
+However, it's hard to fit it completely because the projected image cannot make new knots on their own.
 
 In this way, even if the numerical evaluations of the error and the discrepancy of distributions are small,
-the wasserstein autoencoders are not capable to create new knots.
+the wasserstein autoencoders are not capable of creating new knots.
 The topological discrepancy cannot be resolved just by the autoencoders.
 
 Table 3.3.1. Hyper parameters 
