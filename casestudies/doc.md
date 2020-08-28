@@ -198,6 +198,26 @@ Here is the configuration of agents and environments:
 - The environment randomly samples values from [a trefoil knot](https://en.wikipedia.org/wiki/Trefoil_knot#Descriptions).
 - The latent variable of the agents are sampled from an unknot circle.
 
+Table 3.3.1. Hyper parameters 
+
+|name|description|value|
+|-|-|-|
+|nEpoch|the number of epochs | 512|
+|nBatch|the sample size of a single batch|32|
+|nH|the number of units of the encoder and decoder network|32|
+|nLayer|the number of layers of the encoder and decoder network|3|
+|reg_param|the regularization parameter | 0.1 |
+|activation|activation function of agent|tanh|
+
+<img src = "./img/cs03c_score.png" width = "50%"> 
+Fig 3.3.1 Learning curve of the representative error and the discrepancy between the the referenced and the projected  latent variable distributions
+
+<img src = "./img/cs03c_encoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "50%"> 
+Fig 3.3.2(a) Input and output image of a trained encoder
+
+<img src = "./img/cs03c_decoder_projection_A8h1YHFMvFCZkzb0_azim=000.png" width = "50%"> 
+Fig 3.3.2(b) Input and output image of a trained decoder
+
 # 4. References
 
 <ul>
