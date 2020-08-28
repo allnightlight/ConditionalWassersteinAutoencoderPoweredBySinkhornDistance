@@ -11,9 +11,9 @@ In this short text, we study the consequence of autoencoders' training due to  t
 
 ## 2-1. Agent
 
-Agents consist of encoder and decoder networks. The encoder networks transform observable variables into latent variables, and the decoder networks reverse the latent variables into the represented observable variables.
+Agents consist of encoder and decoder networks. The encoder networks transform observable variables into latent variables and the decoder networks reverse the latent variables into the represented observable variables.
 
-In our case studies, we define these two networks as the multilayer perceptron with the hyperparameters: number of units `nH`, number of layers `nLayer` and activation function `activation`, where the encoder and decoder networks share the same hyperparameters. The values of the hyperparameters are defined in each case study.
+In our case studies, we define these two networks as the multilayer perceptron with the following hyperparameters: number of units `nH`, number of layers `nLayer` and activation function `activation`, where the encoder and decoder networks share the same hyperparameters. The values of the hyperparameters are defined in each case study.
 
 ## 2-2. Environment
 
